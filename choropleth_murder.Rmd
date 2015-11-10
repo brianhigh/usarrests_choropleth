@@ -1,11 +1,15 @@
-# R Choropleth Demo: US Arrests for Murder by State
-Brian High  
-Nov. 10th, 2015  
+---
+title: 'R Choropleth Demo: US Arrests for Murder by State'
+author: "Brian High"
+date: "Nov. 10th, 2015"
+output:
+  html_document:
+    keep_md: yes
+---
 
 ## Load Packages
 
-
-```r
+```{r, choro0, echo=TRUE, eval=TRUE, message=FALSE, warning=TRUE}
 # Install packages (if necessary)
 for (pkg in c("ggmap", "dplyr")) {
     if (! suppressWarnings(require(pkg, character.only=TRUE)) ) {
@@ -19,8 +23,7 @@ for (pkg in c("ggmap", "dplyr")) {
 
 ## Load Data
 
-
-```r
+```{r, choro1, echo=TRUE, eval=TRUE}
 # From: https://www3.amherst.edu/~nhorton/r2/examples/advanced.R
 USArrests.st = mutate(USArrests, 
                       region=tolower(rownames(USArrests)),
@@ -32,8 +35,7 @@ map_data = arrange(map_data, order)
 
 ## Generate Choropleth Map
 
-
-```r
+```{r, choro2, echo=TRUE, eval=TRUE, fig.height=4}
 # From: https://www3.amherst.edu/~nhorton/r2/examples/advanced.R
 p0 = ggplot(map_data, aes(x=long, y=lat, group=group)) +
     geom_polygon(aes(fill = murder)) +
@@ -44,5 +46,3 @@ p0 = ggplot(map_data, aes(x=long, y=lat, group=group)) +
     scale_fill_grey(start=1, end =.1) + coord_map();
 plot(p0)
 ```
-
-![](choropleth_murder_files/figure-html/choro2-1.png) 
