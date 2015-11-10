@@ -8,7 +8,7 @@ output:
 ---
 
 This [code](https://www3.amherst.edu/~nhorton/r2/examples/advanced.R) example 
-was found the [book](https://www.crcpress.com/Using-R-and-RStudio-for-Data-Management-Statistical-Analysis-and-Graphics/Horton-Kleinman/9781482237368):
+was found in the [book](https://www.crcpress.com/Using-R-and-RStudio-for-Data-Management-Statistical-Analysis-and-Graphics/Horton-Kleinman/9781482237368):
 
 > Horton, Nicholas J, and Ken Kleinman. *Using R 
 > and Rstudio for Data Management, Statistical 
