@@ -7,14 +7,22 @@ output:
     keep_md: yes
 ---
 
-This [code](https://www3.amherst.edu/~nhorton/r2/examples/advanced.R) example was found the [book](https://www.crcpress.com/Using-R-and-RStudio-for-Data-Management-Statistical-Analysis-and-Graphics/Horton-Kleinman/9781482237368):
+This [code](https://www3.amherst.edu/~nhorton/r2/examples/advanced.R) example 
+was found the [book](https://www.crcpress.com/Using-R-and-RStudio-for-Data-Management-Statistical-Analysis-and-Graphics/Horton-Kleinman/9781482237368):
 
 > Horton, Nicholas J, and Ken Kleinman. *Using R 
 > and Rstudio for Data Management, Statistical 
 > Analysis, and Graphics*. Boca Raton, Florida: 
 > CRC Press, 2015.
 
-We have modified the original script by using a different code block for loading packages and by converting to an Rmd source document.
+The pages from the book which cover this example have been provided as a 
+[excerpt](https://www3.amherst.edu/~nhorton/r2/choropleth.pdf)
+in PDF format, available for download from the 
+[author's website](https://www3.amherst.edu/~nhorton/r2/excerpt.php).
+
+In this document, we have modified the original script slilghtly by using a 
+different code block for loading packages and by converting to an Rmd 
+source document.
 
 ## Procedure Description
 
@@ -28,7 +36,8 @@ From the text (p. 193):
 > (2.3.11) and to sort the resulting dataframe (2.3.10) so that the shape 
 > data for the states is plotted in order.
 
-[188] H. Wickham. *ggplot2: Elegant Graphics for Data Analysis*. Springer, New York, 2009.
+[188] H. Wickham. *ggplot2: Elegant Graphics for Data Analysis*. Springer, 
+New York, 2009.
 
 ## Load Packages
 
