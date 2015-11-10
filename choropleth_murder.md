@@ -2,6 +2,15 @@
 Brian High  
 Nov. 10th, 2015  
 
+This [code](https://www3.amherst.edu/~nhorton/r2/examples/advanced.R) example was found the [book](https://www.crcpress.com/Using-R-and-RStudio-for-Data-Management-Statistical-Analysis-and-Graphics/Horton-Kleinman/9781482237368):
+
+> Horton, Nicholas J, and Ken Kleinman. *Using R 
+> and Rstudio for Data Management, Statistical 
+> Analysis, and Graphics*. Boca Raton, Florida: 
+> CRC Press, 2015.
+
+We have modified the original script by using a different code block for loading packages and by converting to an Rmd source document.
+
 ## Load Packages
 
 
