@@ -44,6 +44,16 @@ map_data = arrange(map_data, order)
 
 ## Generate Choropleth Map
 
+From the text (p. 194):
+
+> The `scale_fill_grey()` function changes the colors from the default 
+> unordered multiple colors to an ordered and print-friendly black and white 
+> (see also `scale_file_brewer`). The `ggmap` package uses the Mercator 
+> projection (see `coord_map()` in the `ggplot2` package and `mapproject` in 
+> the `mapproject` package). Another implementation of choropleth maps can be 
+> found in the `choroplethr` package.
+
+
 ```{r, choro2, echo=TRUE, eval=TRUE, fig.height=4}
 # From: https://www3.amherst.edu/~nhorton/r2/examples/advanced.R
 p0 = ggplot(map_data, aes(x=long, y=lat, group=group)) +
