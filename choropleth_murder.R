@@ -1,5 +1,6 @@
 ## ----choro0, echo=FALSE, eval=TRUE, message=FALSE, warning=TRUE-----------
 # See:
+# https://www3.amherst.edu/~nhorton/r2/examples.php
 # https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/USArrests.html
 # https://en.wikipedia.org/wiki/Choropleth_map
 
