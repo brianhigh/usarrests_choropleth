@@ -16,6 +16,20 @@ This [code](https://www3.amherst.edu/~nhorton/r2/examples/advanced.R) example wa
 
 We have modified the original script by using a different code block for loading packages and by converting to an Rmd source document.
 
+## Procedure Description
+
+From the text (p. 193):
+
+> We'll use the `ggmap` package to generate the plot. It builds on the `ggplot2` 
+> package, which implements ideas related to the "grammar of graphics" [188]. 
+> The package uses a syntax where specific elements of the plot are added to 
+> the final product using special functions connected by the + symbol. Some 
+> additional work is needed to merge the dataset with the state information 
+> (2.3.11) and to sort the resulting dataframe (2.3.10) so that the shape 
+> data for the states is plotted in order.
+
+[188] H. Wickham. *ggplot2: Elegant Graphics for Data Analysis*. Springer, New York, 2009.
+
 ## Load Packages
 
 ```{r, choro0, echo=TRUE, eval=TRUE, message=FALSE, warning=TRUE}
