@@ -1,25 +1,9 @@
-## ----choro0, echo=FALSE, eval=TRUE, message=FALSE, warning=TRUE-----------
+## ----choro1,echo=TRUE, eval=TRUE-----------------------------------------
 # See:
 # https://www3.amherst.edu/~nhorton/r2/examples.php
-# https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/USArrests.html
-# https://en.wikipedia.org/wiki/Choropleth_map
+# https://www3.amherst.edu/~nhorton/r2/excerpt.php
 
-#+ create-rmd, echo=FALSE, eval=TRUE
-suppressMessages(library(knitr))
-spin(report = TRUE, hair = "choropleth_murder.R", format = "Rmd")
-
-# Install packages (if necessary)
-for (pkg in c("ggmap", "dplyr")) {
-    if (! suppressWarnings(require(pkg, character.only=TRUE)) ) {
-        install.packages(pkg, repos="http://cran.fhcrc.org", dependencies=TRUE)
-        if (! suppressWarnings(require(pkg, character.only=TRUE)) ) {
-            stop(paste0(c("Can't load package: ", pkg, "!"), collapse = ""))
-        }
-    }
-}
-
-## ----choro1, echo=TRUE, eval=TRUE------------------------------------------
-# From: https://www3.amherst.edu/~nhorton/r2/examples/advanced.R
+## ----choro0,echo=TRUE, eval=TRUE-----------------------------------------
 library(ggmap); library(dplyr)
 USArrests.st = mutate(USArrests, 
                       region=tolower(rownames(USArrests)),
@@ -29,8 +13,7 @@ map_data = merge(USArrests.st, us_state_map, by="region")
 map_data = arrange(map_data, order)
 head(select(map_data, region, Murder, murder, long, lat, group, order))
 
-## ----choro2, echo=TRUE, eval=TRUE------------------------------------------
-# From: https://www3.amherst.edu/~nhorton/r2/examples/advanced.R
+## ----choro,echo=TRUE, eval=TRUE------------------------------------------
 p0 = ggplot(map_data, aes(x=long, y=lat, group=group)) +
     geom_polygon(aes(fill = murder)) +
     geom_path(colour='black') +
