@@ -1,4 +1,7 @@
 ---
+output: pdf_document
+---
+---
 title: 'R Choropleth Demo: US Arrests for Murder by State'
 author: "Brian High"
 date: "Nov. 10th, 2015"
