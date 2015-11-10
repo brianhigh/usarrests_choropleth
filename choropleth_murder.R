@@ -4,6 +4,10 @@
 # https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/USArrests.html
 # https://en.wikipedia.org/wiki/Choropleth_map
 
+#+ create-rmd, echo=FALSE, eval=TRUE
+suppressMessages(library(knitr))
+spin(report = TRUE, hair = "choropleth_murder.R", format = "Rmd")
+
 # Install packages (if necessary)
 for (pkg in c("ggmap", "dplyr")) {
     if (! suppressWarnings(require(pkg, character.only=TRUE)) ) {
