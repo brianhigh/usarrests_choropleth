@@ -20,7 +20,7 @@ The pages from the book which cover this example have been provided as a
 in PDF format, available for download from the 
 [author's website](https://www3.amherst.edu/~nhorton/r2/excerpt.php).
 
-In this document, we have modified the original script slilghtly by using a 
+In this document, we have modified the original script by using a 
 different code block for loading packages and by converting to an Rmd 
 source document.
 
