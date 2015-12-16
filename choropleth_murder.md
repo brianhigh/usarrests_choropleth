@@ -53,13 +53,13 @@ for (pkg in c("ggmap", "dplyr")) {
 
 
 ```r
-# From: https://www3.amherst.edu/~nhorton/r2/examples/advanced.R
+# Modified from: https://www3.amherst.edu/~nhorton/r2/examples/advanced.R
 USArrests.st = mutate(USArrests, 
                       region=tolower(rownames(USArrests)),
                       murder = cut_number(Murder, 5))
 us_state_map = map_data('state')
-map_data = merge(USArrests.st, us_state_map, by="region")
-map_data = arrange(map_data, order)
+us_map_data = merge(USArrests.st, us_state_map, by="region")
+us_map_data = arrange(us_map_data, order)
 ```
 
 ## Generate Choropleth Map
@@ -76,8 +76,8 @@ From the text (p. 194):
 
 
 ```r
-# From: https://www3.amherst.edu/~nhorton/r2/examples/advanced.R
-p0 = ggplot(map_data, aes(x=long, y=lat, group=group)) +
+# Modified from: https://www3.amherst.edu/~nhorton/r2/examples/advanced.R
+p0 = ggplot(us_map_data, aes(x=long, y=lat, group=group)) +
     geom_polygon(aes(fill = murder)) +
     geom_path(colour='black') +
     theme(legend.position = "bottom", 
