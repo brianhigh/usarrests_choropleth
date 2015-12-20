@@ -1,97 +1,135 @@
-# US FBI Crime Estimates
-Brian High  
-12/20/2015  
+<!DOCTYPE html>
 
-Explore US state crime data from the the US DOJ, FBI UCR. Plot
-property crime and violent crime for the nation and by state. Use motion charts
-to allow dynamic visualization of variables changing over time.
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-## Data Sources
+<head>
 
-United States Department of Justice, Federal Bureau of Investigation. 
-(September 2015). Crime in the United States, 2014. Retrieved 
-December 20, 2015, from UCRDATATOOL.gov.
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
 
-Link to the form which can be used to select data for download as CSV:
-http://www.ucrdatatool.gov/Search/Crime/State/StatebyState.cfm
+<meta name="author" content="Brian High" />
 
-Link to the FBI UCR website with more informatoun about this source:
-https://www.fbi.gov/about-us/cjis/ucr/
+<meta name="date" content="2015-12-20" />
 
-### Data include estimates
+<title>US FBI Crime Estimates</title>
 
-The United States Department of Justice says: 
- 
-"National or state offense totals are based on data from all reporting 
-agencies and estimates for unreported areas."
-  
-From: UCRDATATOOL.gov
+<script src="fbi_us_crimes_by_state_files/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="fbi_us_crimes_by_state_files/bootstrap-3.3.1/css/bootstrap.min.css" rel="stylesheet" />
+<script src="fbi_us_crimes_by_state_files/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="fbi_us_crimes_by_state_files/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="fbi_us_crimes_by_state_files/bootstrap-3.3.1/shim/respond.min.js"></script>
 
-### Data are not entirely comparable
-
-* Changes in reporting from year to year, etc., make comparisons problematic.
-* See numerous notes in results page (or CSV) from UCRDATATOOL.gov.
-
-### Caution against ranking
-
-The United States Department of Justice says:
-
-"Many entities—news media, tourism agencies, and other groups with an interest 
-in crime in our Nation—use figures from the Uniform Crime Reporting (UCR) 
-Program to compile rankings of cities and counties.  These rankings, however, 
-are merely a quick choice made by the data user; they provide no insight into 
-the many variables that mold the crime in a particular town, city, county, 
-state, region, or other jurisdiction.  Consequently, these rankings lead to 
-simplistic and/or incomplete analyses that often create misleading perceptions
-adversely affecting cities and counties, along with their residents."
-
-From: http://www.ucrdatatool.gov/ranking.cfm
-
-## Configure document rendering
-
-Set `knitr` options for nicer rendering this document.
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="fbi_us_crimes_by_state_files/highlight/default.css"
+      type="text/css" />
+<script src="fbi_us_crimes_by_state_files/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
 
 
-```r
-library(knitr)
-opts_chunk$set(tidy=FALSE, cache=TRUE, error=TRUE)
-```
 
-## User-defined functions
+</head>
 
-### Load Packages (function definition)
+<body>
 
-Get and load required R packages.
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
 
 
-```r
-load_packages <- function(pkgs){
+<div id="header">
+<h1 class="title">US FBI Crime Estimates</h1>
+<h4 class="author"><em>Brian High</em></h4>
+<h4 class="date"><em>12/20/2015</em></h4>
+</div>
+
+
+<p>Explore US state crime data from the the US DOJ, FBI UCR. Plot property crime and violent crime for the nation and by state. Use motion charts to allow dynamic visualization of variables changing over time.</p>
+<div id="data-sources" class="section level2">
+<h2>Data Sources</h2>
+<p>United States Department of Justice, Federal Bureau of Investigation. (September 2015). Crime in the United States, 2014. Retrieved December 20, 2015, from UCRDATATOOL.gov.</p>
+<p>Link to the form which can be used to select data for download as CSV: <a href="http://www.ucrdatatool.gov/Search/Crime/State/StatebyState.cfm" class="uri">http://www.ucrdatatool.gov/Search/Crime/State/StatebyState.cfm</a></p>
+<p>Link to the FBI UCR website with more informatoun about this source: <a href="https://www.fbi.gov/about-us/cjis/ucr/" class="uri">https://www.fbi.gov/about-us/cjis/ucr/</a></p>
+<div id="data-include-estimates" class="section level3">
+<h3>Data include estimates</h3>
+<p>The United States Department of Justice says:</p>
+<p>“National or state offense totals are based on data from all reporting agencies and estimates for unreported areas.”</p>
+<p>From: UCRDATATOOL.gov</p>
+</div>
+<div id="data-are-not-entirely-comparable" class="section level3">
+<h3>Data are not entirely comparable</h3>
+<ul>
+<li>Changes in reporting from year to year, etc., make comparisons problematic.</li>
+<li>See numerous notes in results page (or CSV) from UCRDATATOOL.gov.</li>
+</ul>
+</div>
+<div id="caution-against-ranking" class="section level3">
+<h3>Caution against ranking</h3>
+<p>The United States Department of Justice says:</p>
+<p>“Many entities—news media, tourism agencies, and other groups with an interest in crime in our Nation—use figures from the Uniform Crime Reporting (UCR) Program to compile rankings of cities and counties. These rankings, however, are merely a quick choice made by the data user; they provide no insight into the many variables that mold the crime in a particular town, city, county, state, region, or other jurisdiction. Consequently, these rankings lead to simplistic and/or incomplete analyses that often create misleading perceptions adversely affecting cities and counties, along with their residents.”</p>
+<p>From: <a href="http://www.ucrdatatool.gov/ranking.cfm" class="uri">http://www.ucrdatatool.gov/ranking.cfm</a></p>
+</div>
+</div>
+<div id="configure-document-rendering" class="section level2">
+<h2>Configure document rendering</h2>
+<p>Set <code>knitr</code> options for nicer rendering this document.</p>
+<pre class="r"><code>library(knitr)
+opts_chunk$set(tidy=FALSE, cache=TRUE, error=TRUE)</code></pre>
+</div>
+<div id="user-defined-functions" class="section level2">
+<h2>User-defined functions</h2>
+<div id="load-packages-function-definition" class="section level3">
+<h3>Load Packages (function definition)</h3>
+<p>Get and load required R packages.</p>
+<pre class="r"><code>load_packages &lt;- function(pkgs){
     
     # Load the required R packages.
     for (pkg in pkgs){
         if (! suppressWarnings(require(pkg, character.only=TRUE)) ) {
             install.packages(pkg, 
-                             repos="http://cran.fhcrc.org", dependencies=TRUE)
+                             repos=&quot;http://cran.fhcrc.org&quot;, dependencies=TRUE)
             if (! suppressWarnings(require(pkg, character.only=TRUE)) ) {
-                stop(paste0(c("Can't load package: ", pkg, "!"), collapse=""))
+                stop(paste0(c(&quot;Can&#39;t load package: &quot;, pkg, &quot;!&quot;), collapse=&quot;&quot;))
             }
         }
     }
-}
-```
-
-### Download Data (function definition)
-
-Download CSV from DOJ UCR using RCurl's `postForm()`.
-
-
-```r
-download_data <- function(output.file, url, referer, user.agent, ystart, yend) {
+}</code></pre>
+</div>
+<div id="download-data-function-definition" class="section level3">
+<h3>Download Data (function definition)</h3>
+<p>Download CSV from DOJ UCR using RCurl’s <code>postForm()</code>.</p>
+<pre class="r"><code>download_data &lt;- function(output.file, url, referer, user.agent, ystart, yend) {
     # To get the CSV we must first fill out the form. Use postForm() to 
     # supply the paramters to request all data for all states. The form
-    # also requires a 'user agent' string and a 'referer' [sic].
+    # also requires a &#39;user agent&#39; string and a &#39;referer&#39; [sic].
     # This information may be retrieved using, e.g., Chrome Developer Tools.
-    result.string <- postForm(url,
+    result.string &lt;- postForm(url,
                   StateId=52,StateId=1,StateId=2,StateId=3,StateId=4,StateId=5,
                   StateId=6,StateId=7,StateId=8,StateId=9,StateId=10,StateId=11,
                   StateId=12,StateId=13,StateId=14,StateId=15,StateId=16,
@@ -103,7 +141,7 @@ download_data <- function(output.file, url, referer, user.agent, ystart, yend) {
                   StateId=42,StateId=43,StateId=44,StateId=45,StateId=46,
                   StateId=47,StateId=48,StateId=49,StateId=50,StateId=51,
                   DataType=1,DataType=2,DataType=3,DataType=4,YearStart=ystart,
-                  YearEnd=yend,NextPage='Get+Table',
+                  YearEnd=yend,NextPage=&#39;Get+Table&#39;,
                   .opts = curlOptions(
                       referer = referer,
                       verbose = TRUE,
@@ -116,289 +154,219 @@ download_data <- function(output.file, url, referer, user.agent, ystart, yend) {
     sink(output.file)
     cat(result.string)
     sink()
-}
-```
-
-### Read State Data (function definition)
-
-Get crime data for one state from the DOJ/FBI file.
-
-
-```r
-read_state_data <- function(state, datafile, datalines) { 
+}</code></pre>
+</div>
+<div id="read-state-data-function-definition" class="section level3">
+<h3>Read State Data (function definition)</h3>
+<p>Get crime data for one state from the DOJ/FBI file.</p>
+<pre class="r"><code>read_state_data &lt;- function(state, datafile, datalines) { 
     # Calculate the start line for each state, 2 rows after state name appears.
-    line.start <- grep(state, datalines)
-    skip <- line.start[1] + 2
+    line.start &lt;- grep(state, datalines)
+    skip &lt;- line.start[1] + 2
     
     # End line for state is first blank line after state data. This method
     # allows for state data of variable number of years (rows).
-    line.end <- grep("^$", datalines[skip:length(datalines)])
-    n <- line.end[1] - 2
+    line.end &lt;- grep(&quot;^$&quot;, datalines[skip:length(datalines)])
+    n &lt;- line.end[1] - 2
     
     # Get column names and clean them up
-    header <- strsplit(datalines[skip], split=",")
-    header <- gsub(pattern = "[ -]", replacement = "_", x = header[[1]])
+    header &lt;- strsplit(datalines[skip], split=&quot;,&quot;)
+    header &lt;- gsub(pattern = &quot;[ -]&quot;, replacement = &quot;_&quot;, x = header[[1]])
 
-    state.data <- read.table(datafile, header=FALSE, sep = ",", skip = skip, 
+    state.data &lt;- read.table(datafile, header=FALSE, sep = &quot;,&quot;, skip = skip, 
                              nrows = n, stringsAsFactors = FALSE)
     
     # Add a column for state name so this will be retained as data is combined.
-    state.data$State <- rep(state, times = nrow(state.data))
+    state.data$State &lt;- rep(state, times = nrow(state.data))
     
     # Assign column names.
-    names(state.data) <- c(header, "State", recursive = TRUE)
+    names(state.data) &lt;- c(header, &quot;State&quot;, recursive = TRUE)
     
     # Convert column names to lower case.
-    names(state.data) <- tolower(names(state.data))
+    names(state.data) &lt;- tolower(names(state.data))
     
     return(state.data)
-}
-```
-
-### Get Data (function definition)
-
-Get crime data from the CSV file made using DOJ UCR tool.
-
-
-```r
-get_data <- function(datafile) {
+}</code></pre>
+</div>
+<div id="get-data-function-definition" class="section level3">
+<h3>Get Data (function definition)</h3>
+<p>Get crime data from the CSV file made using DOJ UCR tool.</p>
+<pre class="r"><code>get_data &lt;- function(datafile) {
     # Tidy the CSV, as it has embedded state-name header rows we need to skip.
-    states <- c(state.name, "United States-Total")
-    datalines <- readLines(datafile, warn = FALSE)
-    st.data <- do.call("rbind", 
+    states &lt;- c(state.name, &quot;United States-Total&quot;)
+    datalines &lt;- readLines(datafile, warn = FALSE)
+    st.data &lt;- do.call(&quot;rbind&quot;, 
                        lapply(states, function(x) 
                            read_state_data(x, datafile, datalines)))
     return(st.data)
-}
-```
-
-## Load packages
-
-Load the R packages you will need, installing any that you are missing.
-
-
-```r
-# Load packages
-load_packages(c("datasets", "stringr", "tidyr", "ggplot2", "googleVis", 
-                "R.utils", "dplyr"))
-```
-
-## Data Management
-
-### Prepare the data folder
-
-Create the data folder if it does not already exist.
-
-
-```r
-# Create the data folder if needed.
-datadir <- "data/doj_ucr"
-dir.create(file.path(datadir), showWarnings = FALSE, recursive = TRUE)
-```
-
-### Load the crime data
-
-If you have the tidied data file, use that, or if not, use the original data
-file. Failing that, download the data from the DOJ and tidy the data.
-
-
-```r
-# Load the crime data into a single data frame.
-tidydatafile <- paste(datadir, "us-crime-by-state.csv", sep="/")
+}</code></pre>
+</div>
+</div>
+<div id="load-packages" class="section level2">
+<h2>Load packages</h2>
+<p>Load the R packages you will need, installing any that you are missing.</p>
+<pre class="r"><code># Load packages
+load_packages(c(&quot;datasets&quot;, &quot;stringr&quot;, &quot;tidyr&quot;, &quot;ggplot2&quot;, &quot;googleVis&quot;, 
+                &quot;R.utils&quot;, &quot;dplyr&quot;))</code></pre>
+</div>
+<div id="data-management" class="section level2">
+<h2>Data Management</h2>
+<div id="prepare-the-data-folder" class="section level3">
+<h3>Prepare the data folder</h3>
+<p>Create the data folder if it does not already exist.</p>
+<pre class="r"><code># Create the data folder if needed.
+datadir &lt;- &quot;data/doj_ucr&quot;
+dir.create(file.path(datadir), showWarnings = FALSE, recursive = TRUE)</code></pre>
+</div>
+<div id="load-the-crime-data" class="section level3">
+<h3>Load the crime data</h3>
+<p>If you have the tidied data file, use that, or if not, use the original data file. Failing that, download the data from the DOJ and tidy the data.</p>
+<pre class="r"><code># Load the crime data into a single data frame.
+tidydatafile &lt;- paste(datadir, &quot;us-crime-by-state.csv&quot;, sep=&quot;/&quot;)
 if (file.exists(tidydatafile) == TRUE) {
     # Read the tidy data file into a data frame.
-    us.crime <- read.csv(tidydatafile)
+    us.crime &lt;- read.csv(tidydatafile)
 } else {
-    datafile <- paste(datadir, "CrimeStatebyState.csv", sep="/")
+    datafile &lt;- paste(datadir, &quot;CrimeStatebyState.csv&quot;, sep=&quot;/&quot;)
     
     if (file.exists(datafile) == FALSE) {
-        # If you don't have the original CSV then download it from DOJ/FBI.
-        url.path <- "http://www.ucrdatatool.gov/Search/Crime/State"
-        csv.path <- "DownCrimeStatebyState.cfm/CrimeStatebyState.csv"
-        csv.url <- paste(url.path, csv.path, sep="/")
-        referer <- paste(url.path, "StatebyState.cfm", sep="/")
-        agent <- 'Mozilla/5.0 Chrome/67.8.9.10 Safari/567.8910'
-        ystart <- 1960
-        yend <- 2012
-        res <- download_data(datafile, csv.url, referer, agent, ystart, yend)
+        # If you don&#39;t have the original CSV then download it from DOJ/FBI.
+        url.path &lt;- &quot;http://www.ucrdatatool.gov/Search/Crime/State&quot;
+        csv.path &lt;- &quot;DownCrimeStatebyState.cfm/CrimeStatebyState.csv&quot;
+        csv.url &lt;- paste(url.path, csv.path, sep=&quot;/&quot;)
+        referer &lt;- paste(url.path, &quot;StatebyState.cfm&quot;, sep=&quot;/&quot;)
+        agent &lt;- &#39;Mozilla/5.0 Chrome/67.8.9.10 Safari/567.8910&#39;
+        ystart &lt;- 1960
+        yend &lt;- 2012
+        res &lt;- download_data(datafile, csv.url, referer, agent, ystart, yend)
     }
     
     if (file.exists(datafile) == TRUE) {
         # Tidy the original data file downloaded from the DOJ/FBI.
-        us.crime <- get_data(datafile)
+        us.crime &lt;- get_data(datafile)
         
         # Write the tidy data to a CSV file for later use.
         write.csv(us.crime, tidydatafile, row.names = FALSE)
     } else {
-        stop(paste("Can't find ", datafile, "!", sep=""))
+        stop(paste(&quot;Can&#39;t find &quot;, datafile, &quot;!&quot;, sep=&quot;&quot;))
     }
-}
-```
+}</code></pre>
+</div>
+</div>
+<div id="find-the-timespan-in-years" class="section level2">
+<h2>Find the timespan in years</h2>
+<p>Find minimum and maximum years for dataset timespan. Use this for plot titles.</p>
+<pre class="r"><code>us.crime[us.crime$state != &quot;United States-Total&quot;,] %&gt;% group_by(state) %&gt;% 
+    summarise(min.year=min(year), max.year=max(year)) -&gt; min.max.years
 
-## Find the timespan in years
+min.states.year &lt;- min(min.max.years$min.year)
+max.states.year &lt;- max(min.max.years$max.year)
 
-Find minimum and maximum years for dataset timespan. Use this for plot titles.
-
-
-```r
-us.crime[us.crime$state != "United States-Total",] %>% group_by(state) %>% 
-    summarise(min.year=min(year), max.year=max(year)) -> min.max.years
-
-min.states.year <- min(min.max.years$min.year)
-max.states.year <- max(min.max.years$max.year)
-
-max.us.year <- max(us.crime[us.crime$state == "United States-Total", "year"])
-min.us.year <- min(us.crime[us.crime$state == "United States-Total", "year"])
-```
-
-## Property crime versus violent crime in the US
-
-Prepare the data.
-
-
-```r
-# Subset just the two US totals of major crime groups: violent and property.
-crime.groups <- c("year", "violent_crime_rate", "property_crime_rate")
-us.crime.groups <- us.crime[us.crime$state == "United States-Total", 
+max.us.year &lt;- max(us.crime[us.crime$state == &quot;United States-Total&quot;, &quot;year&quot;])
+min.us.year &lt;- min(us.crime[us.crime$state == &quot;United States-Total&quot;, &quot;year&quot;])</code></pre>
+</div>
+<div id="property-crime-versus-violent-crime-in-the-us" class="section level2">
+<h2>Property crime versus violent crime in the US</h2>
+<p>Prepare the data.</p>
+<pre class="r"><code># Subset just the two US totals of major crime groups: violent and property.
+crime.groups &lt;- c(&quot;year&quot;, &quot;violent_crime_rate&quot;, &quot;property_crime_rate&quot;)
+us.crime.groups &lt;- us.crime[us.crime$state == &quot;United States-Total&quot;, 
                             crime.groups]
 
-# Remove "_crime_rate" from variable names and capitalize the names.
-names(us.crime.groups) <- capitalize(gsub("_crime_rate", "", 
+# Remove &quot;_crime_rate&quot; from variable names and capitalize the names.
+names(us.crime.groups) &lt;- capitalize(gsub(&quot;_crime_rate&quot;, &quot;&quot;, 
                                           names(us.crime.groups)))
 
-# Transform data structure to "long" format for plotting.
-us.crime.groups.long <- gather(us.crime.groups, Type, Rate, -Year)
-```
-
-Make a stacked bar plot.
-
-
-```r
-# Make a bar plot of violent crime versus property crime in the US.
+# Transform data structure to &quot;long&quot; format for plotting.
+us.crime.groups.long &lt;- gather(us.crime.groups, Type, Rate, -Year)</code></pre>
+<p>Make a stacked bar plot.</p>
+<pre class="r"><code># Make a bar plot of violent crime versus property crime in the US.
 ggplot(us.crime.groups.long, aes(x = Year, y = Rate, fill=Type)) +
-    geom_bar(stat='identity') + 
-    ggtitle(paste("US Crime Rate per 100,000 People, ", 
-                  min.us.year, "-", max.us.year, sep=""))
-```
-
-![](fbi_us_crimes_by_state_files/figure-html/unnamed-chunk-10-1.png) 
-
-## Property crime in the US
-
-Prepare the data.
-
-
-```r
-# Subset the property crimes.
-property <- c("year", "property_crime_rate", "burglary_rate", 
-              "larceny_theft_rate", "motor_vehicle_theft_rate", 
-              "state", "population")
-us.property.crime.by.state <- us.crime[, property]
+    geom_bar(stat=&#39;identity&#39;) + 
+    ggtitle(paste(&quot;US Crime Rate per 100,000 People, &quot;, 
+                  min.us.year, &quot;-&quot;, max.us.year, sep=&quot;&quot;))</code></pre>
+<p><img src="fbi_us_crimes_by_state_files/figure-html/unnamed-chunk-10-1.png" /></p>
+</div>
+<div id="property-crime-in-the-us" class="section level2">
+<h2>Property crime in the US</h2>
+<p>Prepare the data.</p>
+<pre class="r"><code># Subset the property crimes.
+property &lt;- c(&quot;year&quot;, &quot;property_crime_rate&quot;, &quot;burglary_rate&quot;, 
+              &quot;larceny_theft_rate&quot;, &quot;motor_vehicle_theft_rate&quot;, 
+              &quot;state&quot;, &quot;population&quot;)
+us.property.crime.by.state &lt;- us.crime[, property]
 
 # Shorten some crime names for shorter plot labels and capitalize them.
-property <- c("Year", "Property", "Burglary", "Larceny", "Motor_Vehicle_Theft",
-             "State", "Population")
-names(us.property.crime.by.state) <- property
+property &lt;- c(&quot;Year&quot;, &quot;Property&quot;, &quot;Burglary&quot;, &quot;Larceny&quot;, &quot;Motor_Vehicle_Theft&quot;,
+             &quot;State&quot;, &quot;Population&quot;)
+names(us.property.crime.by.state) &lt;- property
 
 # Subset to only see US totals not by-state values.
-us.property.crime <- us.property.crime.by.state[
-    us.property.crime.by.state$state == "United States-Total",]
+us.property.crime &lt;- us.property.crime.by.state[
+    us.property.crime.by.state$state == &quot;United States-Total&quot;,]
 
-# Transform data structure to "long" form for plotting.
-us.property.crime.long <- gather(us.property.crime.by.state, Type, Rate, 
-                                 Burglary, Larceny, Motor_Vehicle_Theft)
-```
-
-Make a stacked bar plot.
-
-
-```r
-# Make a bar plot of property crime in the US by crime.
+# Transform data structure to &quot;long&quot; form for plotting.
+us.property.crime.long &lt;- gather(us.property.crime.by.state, Type, Rate, 
+                                 Burglary, Larceny, Motor_Vehicle_Theft)</code></pre>
+<p>Make a stacked bar plot.</p>
+<pre class="r"><code># Make a bar plot of property crime in the US by crime.
 ggplot(us.property.crime.long, aes(x = Year, y = Rate, fill=Type)) +
-    geom_bar(stat='identity') + 
-    ggtitle(paste("US Property Crime Rate per 100,000 People, ", 
-                  min.us.year, "-", max.us.year, sep=""))
-```
-
-![](fbi_us_crimes_by_state_files/figure-html/unnamed-chunk-12-1.png) 
-
-## Violent crime in the US
-
-Prepare the data.
-
-
-```r
-# Subset the violent crimes.
-violent <- c("year", "murder_and_nonnegligent_manslaughter_rate", 
-             "forcible_rape_rate", "robbery_rate", "aggravated_assault_rate", 
-             "violent_crime_rate", "state", "population")
-us.violent.crime.by.state <- us.crime[, violent]
+    geom_bar(stat=&#39;identity&#39;) + 
+    ggtitle(paste(&quot;US Property Crime Rate per 100,000 People, &quot;, 
+                  min.us.year, &quot;-&quot;, max.us.year, sep=&quot;&quot;))</code></pre>
+<p><img src="fbi_us_crimes_by_state_files/figure-html/unnamed-chunk-12-1.png" /></p>
+</div>
+<div id="violent-crime-in-the-us" class="section level2">
+<h2>Violent crime in the US</h2>
+<p>Prepare the data.</p>
+<pre class="r"><code># Subset the violent crimes.
+violent &lt;- c(&quot;year&quot;, &quot;murder_and_nonnegligent_manslaughter_rate&quot;, 
+             &quot;forcible_rape_rate&quot;, &quot;robbery_rate&quot;, &quot;aggravated_assault_rate&quot;, 
+             &quot;violent_crime_rate&quot;, &quot;state&quot;, &quot;population&quot;)
+us.violent.crime.by.state &lt;- us.crime[, violent]
 
 # Shorten some crime names for shorter plot labels and capitalize them.
-violent <- c("Year", "Murder", "Rape", "Robbery", "Assault", "Violent", 
-            "State", "Population")
-names(us.violent.crime.by.state) <- violent
+violent &lt;- c(&quot;Year&quot;, &quot;Murder&quot;, &quot;Rape&quot;, &quot;Robbery&quot;, &quot;Assault&quot;, &quot;Violent&quot;, 
+            &quot;State&quot;, &quot;Population&quot;)
+names(us.violent.crime.by.state) &lt;- violent
 
 # Subset to only see US totals not by-state values.
-us.violent.crime <- us.violent.crime.by.state[
-    us.violent.crime.by.state$state == "United States-Total",]
+us.violent.crime &lt;- us.violent.crime.by.state[
+    us.violent.crime.by.state$state == &quot;United States-Total&quot;,]
 
-# Transform data structure to "long" form for plotting.
-us.violent.crime.long <- gather(us.violent.crime.by.state, Type, Rate, 
-                                Murder, Rape, Robbery, Assault)
-```
-
-Make a stacked bar plot.
-
-
-```r
-# Make a bar plot of violent crime in the US by crime.
+# Transform data structure to &quot;long&quot; form for plotting.
+us.violent.crime.long &lt;- gather(us.violent.crime.by.state, Type, Rate, 
+                                Murder, Rape, Robbery, Assault)</code></pre>
+<p>Make a stacked bar plot.</p>
+<pre class="r"><code># Make a bar plot of violent crime in the US by crime.
 ggplot(us.violent.crime.long, aes(x = Year, y = Rate, fill=Type)) +
-    geom_bar(stat='identity') + 
-    ggtitle(paste("US Violent Crime Rate per 100,000 People, ", 
-            min.us.year, "-", max.us.year, sep=""))
-```
-
-![](fbi_us_crimes_by_state_files/figure-html/unnamed-chunk-14-1.png) 
-
-## US property crime by state
-
-Make a "Motion Chart" of violent crime in the US by state and crime.
-
-
-```r
-# Configure googleVis options.
-op <- options(gvis.plot.tag='chart')
-```
-
-Subset the data and create a plot title variable.
-
-
-```r
-# Subset to only see US states and not the national totals.
-us.property.crime.by.state <- us.property.crime.by.state[
-    us.property.crime.by.state$State != "United States-Total",]
+    geom_bar(stat=&#39;identity&#39;) + 
+    ggtitle(paste(&quot;US Violent Crime Rate per 100,000 People, &quot;, 
+            min.us.year, &quot;-&quot;, max.us.year, sep=&quot;&quot;))</code></pre>
+<p><img src="fbi_us_crimes_by_state_files/figure-html/unnamed-chunk-14-1.png" /></p>
+</div>
+<div id="us-property-crime-by-state" class="section level2">
+<h2>US property crime by state</h2>
+<p>Make a “Motion Chart” of violent crime in the US by state and crime.</p>
+<pre class="r"><code># Configure googleVis options.
+op &lt;- options(gvis.plot.tag=&#39;chart&#39;)</code></pre>
+<p>Subset the data and create a plot title variable.</p>
+<pre class="r"><code># Subset to only see US states and not the national totals.
+us.property.crime.by.state &lt;- us.property.crime.by.state[
+    us.property.crime.by.state$State != &quot;United States-Total&quot;,]
 
 # Make a plot title to use in next heading.
-plot.title <- paste("US Property Crime Rate by State per 100,000 People, ", 
-    min.states.year, "-", max.states.year, sep="")
-```
-
-### US Property Crime Rate by State per 100,000 People, 1960-2012
-
-
-```r
-plot(gvisMotionChart(data = us.property.crime.by.state, idvar = "State", 
-                     timevar = "Year", colorvar = "Property",
-                     xvar = "Motor_Vehicle_Theft", yvar = "Burglary", 
-                     sizevar="Population",
-                     options=list(title=plot.title)))
-```
-
+plot.title &lt;- paste(&quot;US Property Crime Rate by State per 100,000 People, &quot;, 
+    min.states.year, &quot;-&quot;, max.states.year, sep=&quot;&quot;)</code></pre>
+<div id="us-property-crime-rate-by-state-per-100000-people-1960-2012" class="section level3">
+<h3>US Property Crime Rate by State per 100,000 People, 1960-2012</h3>
+<pre class="r"><code>plot(gvisMotionChart(data = us.property.crime.by.state, idvar = &quot;State&quot;, 
+                     timevar = &quot;Year&quot;, colorvar = &quot;Property&quot;,
+                     xvar = &quot;Motor_Vehicle_Theft&quot;, yvar = &quot;Burglary&quot;, 
+                     sizevar=&quot;Population&quot;,
+                     options=list(title=plot.title)))</code></pre>
 <!-- MotionChart generated in R 3.2.3 by googleVis 0.5.10 package -->
 <!-- Sat Dec 19 22:44:39 2015 -->
-
-
 <!-- jsHeader -->
 <script type="text/javascript">
  
@@ -24282,47 +24250,33 @@ callbacks.shift()();
  
 // jsFooter
 </script>
- 
-<!-- jsChart -->  
+<!-- jsChart -->
 <script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID7c046d9f6534"></script>
- 
 <!-- divChart -->
-  
-<div id="MotionChartID7c046d9f6534" 
-  style="width: 600; height: 500;">
+<div id="MotionChartID7c046d9f6534" style="width: 600; height: 500;">
+
 </div>
-
-## US violent crime by state
-
-Make a "Motion Chart" of violent crime in the US by state and crime.
-
-First, subset the data and create a plot title variable.
-
-
-```r
-# Subset to only see US states and not the national totals.
-us.violent.crime.by.state <- us.violent.crime.by.state[
-    us.violent.crime.by.state$State != "United States-Total",]
+</div>
+</div>
+<div id="us-violent-crime-by-state" class="section level2">
+<h2>US violent crime by state</h2>
+<p>Make a “Motion Chart” of violent crime in the US by state and crime.</p>
+<p>First, subset the data and create a plot title variable.</p>
+<pre class="r"><code># Subset to only see US states and not the national totals.
+us.violent.crime.by.state &lt;- us.violent.crime.by.state[
+    us.violent.crime.by.state$State != &quot;United States-Total&quot;,]
 
 # Make a plot title to use in next heading.
-plot.title <- paste("US Violent Crime Rate by State per 100,000 People, ", 
-                    min.states.year, "-", max.states.year, sep="")
-```
-
-### US Violent Crime Rate by State per 100,000 People, 1960-2012
-
-
-```r
-plot(gvisMotionChart(data = us.violent.crime.by.state, idvar = "State", 
-                     timevar = "Year", colorvar = "Violent",
-                     xvar = "Rape", yvar = "Murder", sizevar="Population",
-                     options=list(title=plot.title)))
-```
-
+plot.title &lt;- paste(&quot;US Violent Crime Rate by State per 100,000 People, &quot;, 
+                    min.states.year, &quot;-&quot;, max.states.year, sep=&quot;&quot;)</code></pre>
+<div id="us-violent-crime-rate-by-state-per-100000-people-1960-2012" class="section level3">
+<h3>US Violent Crime Rate by State per 100,000 People, 1960-2012</h3>
+<pre class="r"><code>plot(gvisMotionChart(data = us.violent.crime.by.state, idvar = &quot;State&quot;, 
+                     timevar = &quot;Year&quot;, colorvar = &quot;Violent&quot;,
+                     xvar = &quot;Rape&quot;, yvar = &quot;Murder&quot;, sizevar=&quot;Population&quot;,
+                     options=list(title=plot.title)))</code></pre>
 <!-- MotionChart generated in R 3.2.3 by googleVis 0.5.10 package -->
 <!-- Sat Dec 19 22:44:46 2015 -->
-
-
 <!-- jsHeader -->
 <script type="text/javascript">
  
@@ -50852,12 +50806,36 @@ callbacks.shift()();
  
 // jsFooter
 </script>
- 
-<!-- jsChart -->  
+<!-- jsChart -->
 <script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID7c0476c09b31"></script>
- 
 <!-- divChart -->
-  
-<div id="MotionChartID7c0476c09b31" 
-  style="width: 600; height: 500;">
+<div id="MotionChartID7c0476c09b31" style="width: 600; height: 500;">
+
 </div>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

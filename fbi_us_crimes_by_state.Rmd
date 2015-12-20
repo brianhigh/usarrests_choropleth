@@ -1,14 +1,14 @@
 ---
-title: "US Crime Estimates"
+title: "US FBI Crime Estimates"
 author: "Brian High"
-date: "12/19/2015"
+date: "12/20/2015"
 output:
   html_document:
     keep_md: yes
     self_contained: no
 ---
 
-Explore US state crime data from the the US DOJ (originally from the FBI). Plot
+Explore US state crime data from the the US DOJ, FBI UCR. Plot
 property crime and violent crime for the nation and by state. Use motion charts
 to allow dynamic visualization of variables changing over time.
 
@@ -21,12 +21,15 @@ United States Department of Justice, Federal Bureau of Investigation.
 Link to the form which can be used to select data for download as CSV:
 http://www.ucrdatatool.gov/Search/Crime/State/StatebyState.cfm
 
-### Data values are estimated
+Link to the FBI UCR website with more informatoun about this source:
+https://www.fbi.gov/about-us/cjis/ucr/
+
+### Data include estimates
 
 The United States Department of Justice says: 
  
-   "National or state offense totals are based on data from all reporting 
-   agencies and estimates for unreported areas."
+"National or state offense totals are based on data from all reporting 
+agencies and estimates for unreported areas."
   
 From: UCRDATATOOL.gov
 
@@ -34,6 +37,21 @@ From: UCRDATATOOL.gov
 
 * Changes in reporting from year to year, etc., make comparisons problematic.
 * See numerous notes in results page (or CSV) from UCRDATATOOL.gov.
+
+### Caution against ranking
+
+The United States Department of Justice says:
+
+"Many entities—news media, tourism agencies, and other groups with an interest 
+in crime in our Nation—use figures from the Uniform Crime Reporting (UCR) 
+Program to compile rankings of cities and counties.  These rankings, however, 
+are merely a quick choice made by the data user; they provide no insight into 
+the many variables that mold the crime in a particular town, city, county, 
+state, region, or other jurisdiction.  Consequently, these rankings lead to 
+simplistic and/or incomplete analyses that often create misleading perceptions
+adversely affecting cities and counties, along with their residents."
+
+From: http://www.ucrdatatool.gov/ranking.cfm
 
 ## Configure document rendering
 
