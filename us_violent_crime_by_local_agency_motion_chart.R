@@ -47,10 +47,6 @@ violent.crime <- violent.crime[violent.crime$Population >= 100000,]
 # Remove cases containing NAs
 violent.crime <- na.omit(violent.crime)
 
-# Remove duplicate cases of the index variabes: Year and Location
-index <- which(duplicated(violent.crime[,c("Location", "Year")]))
-violent.crime <- violent.crime[-index, ]
-
 # Make the visualization
 plot(gvisMotionChart(data = violent.crime, idvar = "Location", 
                      timevar = "Year", colorvar = "Violent",
