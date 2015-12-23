@@ -1,6 +1,10 @@
 # ---------------------------------------------------------------------------
 # Get US crime data from the the US DOJ (originally from the FBI).
 #
+# Copyright 2015 Brian High (https://github.com/brianhigh) 
+# License: GNU GPL v3 http://www.gnu.org/licenses/gpl.txt
+# ---------------------------------------------------------------------------
+#
 # Sources:
 #
 #   United States Department of Justice, Federal Bureau of Investigation. 
@@ -14,9 +18,8 @@
 #
 #   These data are just estimates with some degree of uncomparability.
 #   See numerous notes in results page (or CSV) from UCRDATATOOL.gov.
-# ---------------------------------------------------------------------------
-
-# get_all_us_states_local_agencies_fbi_crime_data.R
+#
+# -----------------------------------------------------------------------
 #
 # To get these data from the US DOJ, FBI UCR (UCRDATATOOL.gov), we
 # have to search for one agency at a time if we want all years and all
@@ -27,7 +30,7 @@
 # RCurl supports cookies, so this is not a problem. We will also need
 # to use a generic user-agent string ("Mozilla/5.0") as the default
 # user-agent for curl does not seem to be accepted by the web server.
-
+#
 # The process we want to automate can be shown in this 4-step example:
 #
 # curl -o states.html -c cookies.txt -A "Mozilla/5.0" \
@@ -47,7 +50,7 @@
 #
 # (Note: These will run as-is in "bash", but to run in "DOS", you will need to
 # replace the "\" character at the end of continuing lines with a "^" symbol.)
-
+#
 # These commands first get a page containing the state names and IDs as options
 # in a selection list. Then, for a particular state ID, it fetches another page
 # containing agency names and IDs from another pick list. Third, it gets crime
@@ -68,6 +71,7 @@
 # we need to automate the task of getting the data for over 4,000 agencies, one
 # agency at a time. Fortunately we can do this in R with RCurl.
 #
+# -----------------------------------------------------------------------
 
 library(XML)
 library(RCurl)

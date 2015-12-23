@@ -1,8 +1,13 @@
-# Geocoding the FBI list of local law enforcement agency locations.
+# -----------------------------------------------------------------------
+# Geocode the FBI list of local law enforcement agency locations.
 # Two methods are compared: Yellow Pages API and Google API.
 #
 # The input file is: all_us_states_local_agencies_fbi_crime_data.csv
 # If the output file (locations.csv) already exists, then just load it.
+#
+# Copyright 2015 Brian High (https://github.com/brianhigh) 
+# License: GNU GPL v3 http://www.gnu.org/licenses/gpl.txt
+# -----------------------------------------------------------------------
 
 # Close connections and clear objects.
 closeAllConnections()
