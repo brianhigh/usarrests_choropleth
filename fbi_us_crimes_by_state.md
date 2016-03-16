@@ -10,7 +10,7 @@ to allow dynamic visualization of variables changing over time.
 
 United States Department of Justice, Federal Bureau of Investigation. 
 (September 2015). Crime in the United States, 2014. Retrieved 
-December 20, 2015, from UCRDATATOOL.gov.
+March 15, 2016, from UCRDATATOOL.gov.
 
 Link to the form which can be used to select data for download as CSV:
 http://www.ucrdatatool.gov/Search/Crime/State/StatebyState.cfm
@@ -65,18 +65,12 @@ Get and load required R packages.
 
 
 ```r
-load_packages <- function(pkgs){
-    
-    # Load the required R packages.
-    for (pkg in pkgs){
-        if (! suppressWarnings(require(pkg, character.only=TRUE)) ) {
-            install.packages(pkg, 
-                             repos="http://cran.fhcrc.org", dependencies=TRUE)
-            if (! suppressWarnings(require(pkg, character.only=TRUE)) ) {
-                stop(paste0(c("Can't load package: ", pkg, "!"), collapse=""))
-            }
-        }
-    }
+# Load one or more packages into memory, installing as needed.
+load_packages <- function(pkgs, repos = "http://cran.r-project.org") {
+    result <- sapply(pkgs, function(pkg) { 
+        if (!suppressWarnings(require(pkg, character.only = TRUE))) {
+            install.packages(pkg, quiet = TRUE, repos = repos)
+            library(pkg, character.only = TRUE)}})
 }
 ```
 
