@@ -5,7 +5,6 @@ date: "10/16/2019"
 output:
   html_document:
     keep_md: yes
-    self_contained: no
 editor_options: 
   chunk_output_type: console
 ---
@@ -269,14 +268,14 @@ plot(gvisMotionChart(data = us.property.crime.by.state, idvar = "State",
 ```
 
 <!-- MotionChart generated in R 3.6.1 by googleVis 0.6.4 package -->
-<!-- Wed Oct 16 16:10:05 2019 -->
+<!-- Wed Oct 16 16:42:23 2019 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID3f134e25ad02 () {
+function gvisDataMotionChartID6d975b70e581 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -18509,8 +18508,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID3f134e25ad02() {
-var data = gvisDataMotionChartID3f134e25ad02();
+function drawChartMotionChartID6d975b70e581() {
+var data = gvisDataMotionChartID6d975b70e581();
 var options = {};
 options["width"] = 600;
 options["height"] = 500;
@@ -18518,7 +18517,7 @@ options["state"] = "\n{\"xAxisOption\":\"5\",\"yAxisOption\":\"3\",\"colorOption
 options["title"] = "US Property Crime Rate by State per 100,000 People, 1979-2018";
 
     var chart = new google.visualization.MotionChart(
-    document.getElementById('MotionChartID3f134e25ad02')
+    document.getElementById('MotionChartID6d975b70e581')
     );
     chart.draw(data,options);
     
@@ -18542,9 +18541,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartMotionChartID3f134e25ad02);
+callbacks.push(drawChartMotionChartID6d975b70e581);
 })();
-function displayChartMotionChartID3f134e25ad02() {
+function displayChartMotionChartID6d975b70e581() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -18568,11 +18567,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID3f134e25ad02"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID6d975b70e581"></script>
  
 <!-- divChart -->
   
-<div id="MotionChartID3f134e25ad02" 
+<div id="MotionChartID6d975b70e581" 
   style="width: 600; height: 500;">
 </div>
 
@@ -18605,14 +18604,14 @@ plot(gvisMotionChart(data = us.violent.crime.by.state, idvar = "State",
 ```
 
 <!-- MotionChart generated in R 3.6.1 by googleVis 0.6.4 package -->
-<!-- Wed Oct 16 16:10:07 2019 -->
+<!-- Wed Oct 16 16:42:26 2019 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID3f136c304a35 () {
+function gvisDataMotionChartID6d971e4a0a32 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -42920,8 +42919,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID3f136c304a35() {
-var data = gvisDataMotionChartID3f136c304a35();
+function drawChartMotionChartID6d971e4a0a32() {
+var data = gvisDataMotionChartID6d971e4a0a32();
 var options = {};
 options["width"] = 600;
 options["height"] = 500;
@@ -42929,7 +42928,7 @@ options["state"] = "\n{\"xAxisOption\":\"9\",\"yAxisOption\":\"2\",\"colorOption
 options["title"] = "US Violent Crime Rate by State per 100,000 People, 1979-2018";
 
     var chart = new google.visualization.MotionChart(
-    document.getElementById('MotionChartID3f136c304a35')
+    document.getElementById('MotionChartID6d971e4a0a32')
     );
     chart.draw(data,options);
     
@@ -42953,9 +42952,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartMotionChartID3f136c304a35);
+callbacks.push(drawChartMotionChartID6d971e4a0a32);
 })();
-function displayChartMotionChartID3f136c304a35() {
+function displayChartMotionChartID6d971e4a0a32() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -42979,10 +42978,10 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID3f136c304a35"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID6d971e4a0a32"></script>
  
 <!-- divChart -->
   
-<div id="MotionChartID3f136c304a35" 
+<div id="MotionChartID6d971e4a0a32" 
   style="width: 600; height: 500;">
 </div>
