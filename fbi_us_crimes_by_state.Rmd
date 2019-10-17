@@ -68,8 +68,8 @@ Create the data folder if it does not already exist.
 
 ```{r}
 # Create the data folder if needed.
-datadir <- "data/doj_ucr"
-dir.create(file.path(datadir), showWarnings = FALSE, recursive = TRUE)
+datadir <- file.path("data", "doj_ucr")
+dir.create(datadir, showWarnings = FALSE, recursive = TRUE)
 ```
 
 ### Load the crime data
@@ -79,7 +79,7 @@ file. Failing that, download the data from the DOJ and tidy the data.
 
 ```{r, message=FALSE}
 # Load the crime data into a single data frame.
-datafile <- paste(datadir, "CrimeStatebyState.csv", sep = "/")
+datafile <- file.path(datadir, "CrimeStatebyState.csv")
 if (file.exists(datafile) == TRUE) {
   # Read the data file into a data frame.
   us.crime <- read_csv(datafile)

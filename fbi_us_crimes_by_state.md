@@ -71,8 +71,8 @@ Create the data folder if it does not already exist.
 
 ```r
 # Create the data folder if needed.
-datadir <- "data/doj_ucr"
-dir.create(file.path(datadir), showWarnings = FALSE, recursive = TRUE)
+datadir <- file.path("data", "doj_ucr")
+dir.create(datadir, showWarnings = FALSE, recursive = TRUE)
 ```
 
 ### Load the crime data
@@ -83,7 +83,7 @@ file. Failing that, download the data from the DOJ and tidy the data.
 
 ```r
 # Load the crime data into a single data frame.
-datafile <- paste(datadir, "CrimeStatebyState.csv", sep = "/")
+datafile <- file.path(datadir, "CrimeStatebyState.csv")
 if (file.exists(datafile) == TRUE) {
   # Read the data file into a data frame.
   us.crime <- read_csv(datafile)
@@ -268,14 +268,14 @@ plot(gvisMotionChart(data = us.property.crime.by.state, idvar = "State",
 ```
 
 <!-- MotionChart generated in R 3.6.1 by googleVis 0.6.4 package -->
-<!-- Wed Oct 16 16:42:23 2019 -->
+<!-- Wed Oct 16 17:31:16 2019 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID6d975b70e581 () {
+function gvisDataMotionChartID2472242917dd () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -18508,8 +18508,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID6d975b70e581() {
-var data = gvisDataMotionChartID6d975b70e581();
+function drawChartMotionChartID2472242917dd() {
+var data = gvisDataMotionChartID2472242917dd();
 var options = {};
 options["width"] = 600;
 options["height"] = 500;
@@ -18517,7 +18517,7 @@ options["state"] = "\n{\"xAxisOption\":\"5\",\"yAxisOption\":\"3\",\"colorOption
 options["title"] = "US Property Crime Rate by State per 100,000 People, 1979-2018";
 
     var chart = new google.visualization.MotionChart(
-    document.getElementById('MotionChartID6d975b70e581')
+    document.getElementById('MotionChartID2472242917dd')
     );
     chart.draw(data,options);
     
@@ -18541,9 +18541,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartMotionChartID6d975b70e581);
+callbacks.push(drawChartMotionChartID2472242917dd);
 })();
-function displayChartMotionChartID6d975b70e581() {
+function displayChartMotionChartID2472242917dd() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -18567,11 +18567,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID6d975b70e581"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID2472242917dd"></script>
  
 <!-- divChart -->
   
-<div id="MotionChartID6d975b70e581" 
+<div id="MotionChartID2472242917dd" 
   style="width: 600; height: 500;">
 </div>
 
@@ -18604,14 +18604,14 @@ plot(gvisMotionChart(data = us.violent.crime.by.state, idvar = "State",
 ```
 
 <!-- MotionChart generated in R 3.6.1 by googleVis 0.6.4 package -->
-<!-- Wed Oct 16 16:42:26 2019 -->
+<!-- Wed Oct 16 17:31:19 2019 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMotionChartID6d971e4a0a32 () {
+function gvisDataMotionChartID2472401cc4f5 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -42919,8 +42919,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMotionChartID6d971e4a0a32() {
-var data = gvisDataMotionChartID6d971e4a0a32();
+function drawChartMotionChartID2472401cc4f5() {
+var data = gvisDataMotionChartID2472401cc4f5();
 var options = {};
 options["width"] = 600;
 options["height"] = 500;
@@ -42928,7 +42928,7 @@ options["state"] = "\n{\"xAxisOption\":\"9\",\"yAxisOption\":\"2\",\"colorOption
 options["title"] = "US Violent Crime Rate by State per 100,000 People, 1979-2018";
 
     var chart = new google.visualization.MotionChart(
-    document.getElementById('MotionChartID6d971e4a0a32')
+    document.getElementById('MotionChartID2472401cc4f5')
     );
     chart.draw(data,options);
     
@@ -42952,9 +42952,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartMotionChartID6d971e4a0a32);
+callbacks.push(drawChartMotionChartID2472401cc4f5);
 })();
-function displayChartMotionChartID6d971e4a0a32() {
+function displayChartMotionChartID2472401cc4f5() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -42978,10 +42978,10 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID6d971e4a0a32"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID2472401cc4f5"></script>
  
 <!-- divChart -->
   
-<div id="MotionChartID6d971e4a0a32" 
+<div id="MotionChartID2472401cc4f5" 
   style="width: 600; height: 500;">
 </div>
